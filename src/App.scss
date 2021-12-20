@@ -11,8 +11,11 @@
   align-items: center;
   justify-content: space-between;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 3vw;
-  font-size: 16px;
+  font-size: 16px; // scaling with vw optional... mixed px and vw just as an example...
+
+  @include desktop() {
+    font-size: 1.35vw;
+  }
 
   * {
     box-sizing: border-box;
@@ -45,8 +48,6 @@
       margin: 0 0 2em 0;
       display: inline-block;
     }
-
-   
   }
 }
 

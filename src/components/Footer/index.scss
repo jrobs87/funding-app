@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+
+footer {
+    padding: 0.5em 1em;
+    border: 1px solid $greyLight;
+    border-top-left-radius: $borderRadius;
+    border-top-right-radius: $borderRadius;
+    background: rgba(255, 255, 255, 0.151);
+    backdrop-filter: blur(1em);
+    font-size: 0.75em;
+
+    a {
+        color: $blueDark;
+
+        &:hover {
+            color: $greenDark;
+        }
+    }
+}

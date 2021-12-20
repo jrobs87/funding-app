@@ -4,8 +4,8 @@ import CurrencyInput from 'react-currency-input-field';
 
 export default function Form(props) {
 
-    const [input, setInput] = useState(null);
-    const callback = props.callback;
+    const [input, setInput] = useState(null); // controlled input
+    const callback = props.callback; // fetch API from parent
 
     const handleInput = (value) => {
         setInput(value);
@@ -14,22 +14,17 @@ export default function Form(props) {
     const handleSubmit = (event, cb) => {
         event.preventDefault();
 
-        if (input < 5 ) return;
+        if (input < 5) return; // ignore invalid amounts
 
-        // psuedo POST to donations endpoint...
-        const payload = props.donations;
-
+        // simulated POST 
+        const payload = props.donations; 
         payload.push(parseFloat(input));
         window.localStorage.donations = JSON.stringify(payload);
 
-        // success - update the parent with new data (would be response data from POST)
         setInput("");
         cb();
-
-        // failure - handler error here (messaging + option to try again)
     };
 
-    console.log(input)
     return (
         <>
             <form onSubmit={(event) => handleSubmit(event, callback)} className='form'>

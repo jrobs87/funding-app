@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Fundraising Demo - made with Create React App and deployed to Heroku
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

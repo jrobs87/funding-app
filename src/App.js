@@ -1,6 +1,7 @@
 import './App.scss';
 import Header from './components/Header';
-import Fundraising from './components/Fundraising';
+import Footer from './components/Footer';
+import Fundraising from './components/Donations';
 import { animated, useSpring } from '@react-spring/web';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <main>
         <Fundraising days={"four"} goal={5000} />
       </main>
+      <Footer />
     </animated.div>
   );
 }

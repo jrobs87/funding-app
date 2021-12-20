@@ -11,7 +11,7 @@
             background-color: #E4EBFD;
             color: #5474C7;
             margin: 1em 0;
-            padding: 0.5em 1em;
+            padding: 0.75em 1em;
             border-radius: $borderRadius;
             position: relative;
 
@@ -39,18 +39,45 @@
         }
 
       .donations-main {
-        background: white;
+        background: rgba(255, 255, 255, 0.151);
+        backdrop-filter: blur(1em);
         margin-top: 1em;
         border-radius: $borderRadius;
         overflow: hidden;
         box-shadow: 0.1em 0.1em 0.8rem 0.1em rgba(128, 128, 128, 0.301);
           
-
         .donations-main_inner {
           padding: 2em 2em 2.5em 2em;
-            border: 1px solid rgba(0, 0, 0, 0.007);
-            box-shadow: 0.1em 0.1em 0.8rem 0.1em rgba(128, 128, 128, 0.301);
+          border: 1px solid rgba(0, 0, 0, 0.007);
+          box-shadow: 0.1em 0.1em 0.8rem 0.1em rgba(128, 128, 128, 0.301);
+
+          span {
+            strong {
+              color: black;
+            }
+          }
         }
+      }
+
+      .reset {
+        background-color: $greenDark;
+        color: white;
+        padding: 1em 2em;
+        border: 2px solid $greenDark;
+        border-radius: $borderRadius;
+        font-weight: bold;
+        font-size: 0.75rem;
+        position: fixed;
+        top: 0;
+        right: 0;
+        margin: 2em;
+        cursor: pointer;
+
+        &:hover {
+          background-color: white;
+          color: $greenDark;
+          transition: 0.2s;
+       }
       }
     }
 
