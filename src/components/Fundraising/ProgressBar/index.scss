@@ -1,0 +1,10 @@
+.progress-bar {
+    background-color: #B5F1E5;
+    overflow: hidden;
+
+    .progress-bar_inner {
+        background-color: #18CCA4;
+        height: 1em;
+        width: 101%;
+    }
+}

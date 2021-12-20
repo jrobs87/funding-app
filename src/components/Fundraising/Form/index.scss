@@ -1,0 +1,59 @@
+@import '../../../variables.scss';
+
+.form {
+    position: relative;
+
+    fieldset {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      border: none;
+
+      input {
+        padding: 1em;
+        width: 100%;
+        font-size: 1em;
+        margin: 0;
+        background-color: unset;
+
+        &:focus {
+          outline: 3px solid $blueFocus;
+          outline-offset: -3px;
+          transition: 0.2s;
+        }
+    
+        &[type=text] {
+          flex-grow: 1;
+          flex-basis: 80%;
+          border: 2px solid $greyLight;
+          border-right: none !important;
+          border-bottom-left-radius: $borderRadius;
+          border-top-left-radius: $borderRadius;
+        }
+
+       &[type=submit] {
+         color: white;
+         background-color: $greenDark;
+         border: 2px solid $greenDark;
+         border-bottom-right-radius: $borderRadius;
+         border-top-right-radius: $borderRadius;
+         font-weight: bold;
+         flex-basis: 20%;
+         cursor: pointer !important;
+         
+         &:hover {
+            background-color: white;
+            color: $greenDark;
+            transition: 0.2s;
+         }
+       }
+      }
+    }
+
+    aside {
+        color: rgb(255, 17, 0);
+        bottom: -2em;
+        position: absolute;
+        font-size: 0.85em;
+    }
+  }
