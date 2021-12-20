@@ -2,7 +2,6 @@ import React from 'react';
 import Confetti from 'react-confetti';
 import { useWindowSize } from '@react-hook/window-size';
 
-
 export default function ConfettiFun(props) {
 
     const progress = props.progress || 0;
