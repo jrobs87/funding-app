@@ -10,7 +10,8 @@ export default function Form(props) {
     const [disabled, setDisabled] = useState(false);
 
     const submitButton = useRef();
-    const [submitValue, setSubmitValue] = useState("Give Now")
+    const inputField = useRef();
+    const [submitValue, setSubmitValue] = useState("Give Now");
 
     const [success, setSuccess] = useState(null);
     const callback = props.callback; // fetch API from parent
@@ -23,7 +24,10 @@ export default function Form(props) {
     const handleSubmit = (event, cb) => {
         event.preventDefault();
 
-        if (input < 5) return; // ignore invalid amounts
+        if (input < 5) {
+            inputField.current.focus();
+            return;
+        } // ignore invalid amounts
 
         submitButton.current.focus(); // blur submit
         setSuccess(null);
@@ -80,6 +84,7 @@ export default function Form(props) {
                         step={5}
                         allowNegativeValue={true}
                         disabled={disabled}
+                        ref={inputField}
                         onValueChange={(value) => handleInput(value)}
                     />
                     <input type="submit" value={submitValue} ref={submitButton} disabled={disabled ? true : false} />
