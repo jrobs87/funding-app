@@ -13,7 +13,7 @@ const utility = {
 
     percent: function (a, b) {
         if (a && b) {
-            return ((a / b) - 1) * 100;
+            return ((a / b));
         } else return false;
     }
 }

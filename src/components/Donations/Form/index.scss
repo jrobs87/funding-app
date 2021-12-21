@@ -28,18 +28,23 @@
         margin: 0;
         background-color: unset;
         -webkit-appearance: none;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        transition: 0.1s;
+
+        &:disabled {
+          cursor: progress !important;
+        }
 
         &:focus {
           outline: 3px solid $blueFocus;
           outline-offset: -3px;
-          transition: 0.2s;
         }
     
         &[type=text] {
           flex-grow: 1;
           padding-left: 2em;
           font-weight: 600;
-          flex-basis: 80%;
           border: 2px solid $greyLight;
           border-right: none !important;
           border-bottom-left-radius: $borderRadius;
@@ -52,15 +57,26 @@
          border: 2px solid $greenDark;
          border-bottom-right-radius: $borderRadius;
          border-top-right-radius: $borderRadius;
+         border-left: none;
          font-weight: bold;
-         flex-basis: 20%;
-         cursor: pointer !important;
+        display: flex;
+        justify-content: center;
+        width: 7em !important;
+        min-width: 7em !important;
          
-         &:hover {
+         &:hover, &:focus {
             background-color: white;
             color: $greenDark;
-            transition: 0.2s;
+            border-color: $greyLight;
+            cursor: pointer;
          }
+
+        //  &:disabled {
+        //    &:hover {
+        //     color: white;
+        //     background-color: $greenDark;
+        //    }
+        //  }
        }
       }
     }

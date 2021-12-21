@@ -6,7 +6,6 @@
         max-width: 28em;
         margin: 2em;
 
-
         .donations-remaining {
             background-color: #E4EBFD;
             color: #5474C7;
@@ -21,12 +20,12 @@
               background-color: #E4EBFD;
               width: 2em;
               height: 2em;
-              position: relative;
               position: absolute;
               right: 2em;
               bottom: -0.25em;
               transform: rotate(45deg);
               border-radius: 0.2rem;
+              z-index: -1;
             }
 
             strong {
@@ -44,12 +43,11 @@
         margin-top: 1em;
         border-radius: $borderRadius;
         overflow: hidden;
-        box-shadow: 0.1em 0.1em 0.8rem 0.1em rgba(128, 128, 128, 0.301);
+        box-shadow: $boxShadow;
           
         .donations-main_inner {
           padding: 2em 2em 2.5em 2em;
           border: 1px solid rgba(0, 0, 0, 0.007);
-          box-shadow: 0.1em 0.1em 0.8rem 0.1em rgba(128, 128, 128, 0.301);
 
           span {
             strong {
@@ -59,25 +57,30 @@
         }
       }
 
-      .reset {
-        background-color: $greenDark;
-        color: white;
-        padding: 1em 2em;
-        border: 2px solid $greenDark;
-        border-radius: $borderRadius;
-        font-weight: bold;
-        font-size: 0.75rem;
+      .controls-wrapper {
         position: fixed;
         top: 0;
         right: 0;
-        margin: 2em;
-        cursor: pointer;
+        display: flex;
 
-        &:hover {
+        .controls {
           background-color: white;
-          color: $greenDark;
+          color: $blueDark;
+          padding: 0.5em 1em;
+          border: 2px solid $blueDark;
+          border-radius: $borderRadius;
+          font-weight: bold;
+          font-size: 0.8rem;
+          margin: 1rem 1rem 0 0;
+          cursor: pointer;
           transition: 0.2s;
-       }
+          box-shadow: $boxShadow;
+
+          &:hover {
+            background-color: $blueDark;
+            color: white;
+         }
+        }
       }
     }
 

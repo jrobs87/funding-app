@@ -5,10 +5,10 @@ import { animated, useSpring } from '@react-spring/web';
 export default function ProgressBar(props) {
     const style = useSpring({
         to: {
-            transform: props.percent <= 0.9999 ? `translateX(${props.percent}%)` : "0%"
+            transform: props.percent <= 1 ? `translateX(${ (props.percent) * 100 }%)` : "translateX(100%)"
         },
         from: {
-            transform: `translateX(-100%)`
+            transform: `translateX(0%)`
         }
 
     });

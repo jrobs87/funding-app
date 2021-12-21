@@ -4,8 +4,10 @@ import { useWindowSize } from '@react-hook/window-size';
 
 export default function ConfettiFun(props) {
 
-    const progress = props.progress || 0;
-    const [width, height] = useWindowSize()
+    const progress = props.progress;
+    const [width, height] = useWindowSize();
+
+    console.log(progress)
 
     if (progress >= 1) {
         return <Confetti

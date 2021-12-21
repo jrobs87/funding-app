@@ -20,10 +20,13 @@ const Donations = props => {
         total: 0,
         goal: goal,
         remaining: goal,
-        progress: -100
+        progress: -1
     });
 
     // ----- Simuated GET/API Request ----------------------------------------------------
+
+    const [postSuccess, setpostSuccess] = useState(false); // demo a failed API call...
+
     // simulating a successful GET (in place of fetch + error handling)...
     const fetchAPI = () => {
         if (window.localStorage.donations) {
@@ -49,7 +52,7 @@ const Donations = props => {
             total: 0,
             goal: goal,
             remaining: goal,
-            progress: -100
+            progress: -1
         });
     };
 
@@ -93,12 +96,17 @@ const Donations = props => {
 
                         <div className="donations-main_inner">
                             <Messaging days={days} donations={donations.list} />
-                            <Form donations={donations.list} callback={fetchAPI} />
+                            <Form donations={donations.list} callback={fetchAPI} postSuccess={postSuccess} />
                         </div>
                     </>
                 </div>
 
-                <button onClick={reset} className='reset'>Reset</button>
+                <div className="controls-wrapper">
+                    <button onClick={reset} className='controls reset'>Reset Data</button>
+                    <button className="controls post-success" onClick={() => setpostSuccess(!postSuccess)}>
+                        POST Success: {postSuccess.toString()}
+                    </button>
+                </div>
             </section>
         </>
     );
