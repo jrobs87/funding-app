@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './index.scss';
 import utility from '../../utility';
+import ConfettiFun from './ConfettiFun';
 import Remaining from './Remaining';
+import ProgressBar from './ProgressBar';
 import Messaging from './Messaging';
 import Form from './Form';
-import ProgressBar from './ProgressBar';
-import ConfettiFun from './ConfettiFun';
 import Controls from './Controls';
+import './index.scss';
 
 const Donations = props => {
 
@@ -18,15 +18,15 @@ const Donations = props => {
     const [donations, setDonations] = useState({
         list: [], // leave empty on load
         total: 0, // does not yet exist in API...
-        goal: goal, // 
-        remaining: goal,
+        goal: goal, 
+        remaining: goal, 
         progress: -1 // ensures we begin with progress bar out of view on load...
     });
 
     // ----- Simuated GET/API Request ----------------------------------------------------
     const [postSuccess, setpostSuccess] = useState(true); // demo a failed API call...
 
-    // Successful GET (in place of fetch + error handling)...
+    // "Successful" GET (in place of fetch + error handling)...
     const fetchAPI = () => {
         if (window.localStorage.donations) {
 
@@ -55,7 +55,6 @@ const Donations = props => {
         });
     };
 
-
     // ----- API (simulated/simplified) ------------------------------------------------
     // Simulate an initial GET endpoint on component mount to fetch donations... ignore warnings
     useEffect(() => {
@@ -83,34 +82,41 @@ const Donations = props => {
     return (
         <>
             <ConfettiFun // confetti element for goal completion :)
-            progress={donations.progress} />
+                progress={donations.progress} // simple percentage
+            />
 
             <section className='donations'>
 
                 <Remaining // messaging for amount remaining
-                    goal={goal}
-                    total={donations.total}
-                    remaining={donations.remaining} />
+                    goal={goal} // goal from top level props
+                    total={donations.total} // sum of array
+                    remaining={donations.remaining} // goal - sum of array
+                />
 
                 <div className="donations-main">
-                        <ProgressBar percent={donations.progress} />
+                    <ProgressBar
+                        percent={donations.progress} // simple percentage
+                    />
 
-                        <div className="donations-main_inner">
-                            <Messaging // main text content messaging (days and donors)
-                                days={days}
-                                donations={donations.list} />
+                    <div className="donations-main_inner">
+                        <Messaging // main text content messaging (days and donors)
+                            days={days} // days from initial prop/top level
+                            donations={donations.list} // donations array
+                        />
 
-                            <Form // main Form element (donation submissions)
-                                donations={donations.list}
-                                callback={fetchAPI}
-                                postSuccess={postSuccess} />
-                        </div>
+                        <Form // main Form element (donation submissions)
+                            donations={donations.list} // donations array
+                            callback={fetchAPI} // fetch data (apssed to update in POST)
+                            postSuccess={postSuccess} // boolean to simulate failed POST
+                        />
+                    </div>
                 </div>
 
                 <Controls // demo controls to reset data and toggle APi failures
-                    reset={reset}
-                    postSuccess={postSuccess}
-                    setpostSuccess={setpostSuccess} />
+                    reset={reset} // reset all form/app data
+                    postSuccess={postSuccess} // boolean to simulate failed POST
+                    setpostSuccess={setpostSuccess} // update/toggle failed POST
+                />
             </section>
         </>
     );

@@ -1,20 +1,20 @@
-import './App.scss';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Fundraising from './components/Donations';
 import { animated, useSpring } from '@react-spring/web';
+import Header from './components/Header';
+import Donations from './components/Donations';
+import Footer from './components/Footer';
+import './App.scss';
 
 function App() {
-  const style = useSpring({
+  const fadeIn = useSpring({
     to: { opacity: 1 },
     from: { opacity: 0 }
   })
 
   return (
-    <animated.div className="App" style={style}>
+    <animated.div className="App" style={fadeIn}>
       <Header />
       <main>
-        <Fundraising days={"four"} goal={5000} />
+        <Donations days={"four"} goal={5000} />
       </main>
       <Footer />
     </animated.div>

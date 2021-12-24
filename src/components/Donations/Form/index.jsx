@@ -6,15 +6,15 @@ export default function Form(props) {
 
     const postSuccess = props.postSuccess;
 
-    const [input, setInput] = useState(null); // controlled input
-    const [disabled, setDisabled] = useState(false);
+    const [input, setInput] = useState(null); // controlled input (text/string)
+    const [disabled, setDisabled] = useState(false); // disable toggle
+    const [submitValue, setSubmitValue] = useState("Give Now"); // submit button text
+    const [success, setSuccess] = useState(null); // used to handle API states
 
-    const submitButton = useRef();
+    const submitButton = useRef(); 
     const inputField = useRef();
-    const [submitValue, setSubmitValue] = useState("Give Now");
-
-    const [success, setSuccess] = useState(null);
-    const callback = props.callback; // fetch API from parent
+    
+    const callback = props.callback; // fetch API from parent passed as callback
 
     const handleInput = (value) => {
         if (!success) setSuccess(null);
@@ -24,40 +24,45 @@ export default function Form(props) {
     const handleSubmit = (event, cb) => {
         event.preventDefault();
 
+         // ignore invalid amounts and shift focus back to input
         if (input < 5) {
             inputField.current.focus();
             return;
-        } // ignore invalid amounts
+        };
 
         submitButton.current.focus(); // blur submit
-        setSuccess(null);
-        setDisabled(true);
-        setSubmitValue("Giving...")
+        setSuccess(null); // clear success
+        setDisabled(true); // disable inputs
+        setSubmitValue("Giving..."); // update to interim value
 
         // API (stand-in for POST)
         setTimeout(() => {
            
-
             // success and error handling
             if (postSuccess) {
                 const payload = props.donations;
                 payload.push(parseFloat(input));
 
                 window.localStorage.donations = JSON.stringify(payload);
+                
                 setSuccess(true);
-                setSubmitValue("Thanks!")
+                setSubmitValue("Thanks!");
 
+                // reset form on simulated success
                 setTimeout(() => {
                     setSuccess(null);
                     setDisabled(false);
-                    setSubmitValue("Give Now")
+                    setSubmitValue("Give Now");
 
                     submitButton.current.blur(); // blur submit
                     setInput(""); // clear input
                     cb(); // callback (fetch updated data and re-render - from parent)
-                }, 2000);
+                }, 1500);
             } else {
-                setSubmitValue("Uh Oh!");
+
+                setSubmitValue("Uh Oh!"); // error message
+
+                // reset form on simulated error
                 setTimeout(() => {
                     setSuccess(false);
                     setDisabled(false);
@@ -65,11 +70,10 @@ export default function Form(props) {
                 }, 1000)
             };
 
-        }, 2000);
+        }, 1500);
     };
 
     return (
-        <>
             <form onSubmit={(event) => handleSubmit(event, callback)} className='form'>
                 <fieldset>
                     <label htmlFor="donation" hidden>Donation</label>
@@ -101,7 +105,6 @@ export default function Form(props) {
                     success === false ? <aside>Donation was unsuccessful. </aside> : null
                 }
             </form>
-        </>
     )
 }
 

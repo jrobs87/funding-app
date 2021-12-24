@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+// Helmet used to update all head elements (title, meta, etc.)
 export default function Header() {
 
     return (
