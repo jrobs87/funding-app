@@ -6,6 +6,7 @@ import Messaging from './Messaging';
 import Form from './Form';
 import ProgressBar from './ProgressBar';
 import ConfettiFun from './ConfettiFun';
+import Controls from './Controls';
 
 const Donations = props => {
 
@@ -14,20 +15,18 @@ const Donations = props => {
     const goal = props.goal || 0;
 
     // ----- Donations in State ----------------------------------------------------------
-    // with a real API we use initial of null, then false for failed requests/erros
     const [donations, setDonations] = useState({
-        list: [],
-        total: 0,
-        goal: goal,
+        list: [], // leave empty on load
+        total: 0, // does not yet exist in API...
+        goal: goal, // 
         remaining: goal,
-        progress: -1
+        progress: -1 // ensures we begin with progress bar out of view on load...
     });
 
     // ----- Simuated GET/API Request ----------------------------------------------------
-
     const [postSuccess, setpostSuccess] = useState(true); // demo a failed API call...
 
-    // simulating a successful GET (in place of fetch + error handling)...
+    // Successful GET (in place of fetch + error handling)...
     const fetchAPI = () => {
         if (window.localStorage.donations) {
 
@@ -58,16 +57,17 @@ const Donations = props => {
 
 
     // ----- API (simulated/simplified) ------------------------------------------------
-    // Simulate an initial GET endpoint on component mount to fetch donations
+    // Simulate an initial GET endpoint on component mount to fetch donations... ignore warnings
     useEffect(() => {
         fetchAPI();
     }, []);
 
-
-    // ----- Rendering -----------------------------------------------------------------
-    // with a real/typical API call, I typically use an initial value of null (corresponding 
+    // ----- Rendering Notes -----------------------------------------------------------
+    // With a real/typical API call, I typically use an initial value of null (corresponding 
     // to a loading animation/spinner), false to display an error message/UI, and if the data
-    // in state is truthy on success then we show the actual element with data. e.g. see below...
+    // in state is truthy on success then we show the actual element with data. This allows 
+    // for error handling and rendering logic to be controlled in a very much top-down fashion
+    // e.g. see below...
 
     // if (data === null) {
     //     <LoadingSkeleton />
@@ -79,34 +79,38 @@ const Donations = props => {
     //     </>
     // )
 
-    // simplified rendering with data for demo...
+    // ----- Simplified rendering with data for demo... ----------------------------------
     return (
         <>
-            <ConfettiFun progress={donations.progress} />
+            <ConfettiFun // confetti element for goal completion :)
+            progress={donations.progress} />
 
             <section className='donations'>
 
-                <div className='donations-remaining'>
-                    <Remaining goal={goal} total={donations.total} remaining={donations.remaining} />
-                </div>
+                <Remaining // messaging for amount remaining
+                    goal={goal}
+                    total={donations.total}
+                    remaining={donations.remaining} />
 
                 <div className="donations-main">
-                    <>
                         <ProgressBar percent={donations.progress} />
 
                         <div className="donations-main_inner">
-                            <Messaging days={days} donations={donations.list} />
-                            <Form donations={donations.list} callback={fetchAPI} postSuccess={postSuccess} />
+                            <Messaging // main text content messaging (days and donors)
+                                days={days}
+                                donations={donations.list} />
+
+                            <Form // main Form element (donation submissions)
+                                donations={donations.list}
+                                callback={fetchAPI}
+                                postSuccess={postSuccess} />
                         </div>
-                    </>
                 </div>
 
-                <div className="controls-wrapper">
-                    <button onClick={reset} className='controls reset'>Reset Data</button>
-                    <button className="controls post-success" onClick={() => setpostSuccess(!postSuccess)}>
-                        POST Success: {postSuccess.toString()}
-                    </button>
-                </div>
+                <Controls // demo controls to reset data and toggle APi failures
+                    reset={reset}
+                    postSuccess={postSuccess}
+                    setpostSuccess={setpostSuccess} />
             </section>
         </>
     );

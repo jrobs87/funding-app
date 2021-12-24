@@ -6,7 +6,7 @@ export default function Footer() {
 
     return (
         <footer>
-            John Robertson | <a href="mailto:jwilliamrob@gmail.com">jwilliamrob@gmail.com</a> | { year }
+            John Robertson | <a href="mailto:jwilliamrob@gmail.com">jwilliamrob@gmail.com</a> | {year}
         </footer>
     )
 };

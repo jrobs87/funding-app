@@ -1,0 +1,28 @@
+@import '../../../variables.scss';
+
+.controls-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    margin: 1rem 2rem;
+
+.controls {
+    background-color: white;
+    color: $blueDark;
+    padding: 0.5em 1em;
+    border: 2px solid $blueDark;
+    border-radius: $borderRadius;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin: 0 0 0 1rem;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: $boxShadow;
+
+        &:hover {
+            background-color: $blueDark;
+            color: white;
+        }
+    }
+}

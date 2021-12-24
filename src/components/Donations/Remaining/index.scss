@@ -1,0 +1,30 @@
+@import '../../../variables.scss';
+
+.donations-remaining {
+  background-color: #E4EBFD;
+  color: #5474C7;
+  margin: 1em 0;
+  padding: 0.75em 1em;
+  border-radius: $borderRadius;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    background-color: #E4EBFD;
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    right: 2em;
+    bottom: -0.25em;
+    transform: rotate(45deg);
+    border-radius: 0.2rem;
+    z-index: 0;
+  }
+
+  .dollar-sign {
+      position: relative;
+      font-size: 0.8em;
+      top: -0.2em;
+    }
+}

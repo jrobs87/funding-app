@@ -1,21 +1,30 @@
 import React from 'react';
-import currency from 'currency.js';
+import utility from '../../../utility';
+import './index.scss';
 
 export default function Remaining(props) {
+
     const total = props.total;
     const goal = props.goal;
-    const remaining = props.remaining;
+    const remaining = utility.formatCurrency(props.remaining);
 
     return (
-        <>
+        <div className='donations-remaining'>
             {
-                total >= goal ? <strong>This project is fully funded!</strong> :
+                total >= goal ?
+                    <span>
+                        <strong>Woohoo! This project is fully funded!</strong>
+                        <br />
+                        We have raised <span className='dollar-sign'>$</span>
+                        {utility.formatCurrency(total)} (our goal was <span className='dollar-sign'>$</span>{utility.formatCurrency(goal)})!
+                    </span>
+                    :
                     <>
                         <strong>
-                            <span>$</span>{currency(remaining, { symbol: '', precision: 0 }).format()}
+                            <span className='dollar-sign'>$</span>{remaining}
                         </strong> still needed to fund this project
                     </>
             }
-        </>
+        </div>
     )
 } 

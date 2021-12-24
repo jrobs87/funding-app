@@ -1,13 +1,12 @@
 import React from 'react';
 import Confetti from 'react-confetti';
 import { useWindowSize } from '@react-hook/window-size';
+import './index.scss';
 
 export default function ConfettiFun(props) {
 
     const progress = props.progress;
     const [width, height] = useWindowSize();
-
-    console.log(progress)
 
     if (progress >= 1) {
         return <Confetti

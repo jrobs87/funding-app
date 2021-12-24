@@ -1,7 +1,9 @@
+import currency from "currency.js";
+
 const utility = {
-    difference: function (a, b) {
-        if (a && b) {
-            return a - b;
+    difference: function (valueA, valueB) {
+        if (valueA && valueB) {
+            return valueA - valueB;
         } else return false;
     },
 
@@ -11,10 +13,17 @@ const utility = {
         } else return false;
     },
 
-    percent: function (a, b) {
-        if (a && b) {
-            return ((a / b));
+    percent: function (valueA, valueB, symbol) {
+        if (valueA && valueB) {
+            if(symbol) {
+                return (valueA / valueB) + (symbol || null)
+            }
+            return (valueA / valueB);
         } else return false;
+    },
+
+    formatCurrency: function(value, symbol) {
+        return currency(value, { symbol: symbol || '', precision: 0 }).format()
     }
 }
 
