@@ -51,40 +51,38 @@
           border-top-left-radius: $borderRadius;
         }
 
-       &[type=submit] {
-         color: white;
-         background-color: $greenDark;
-         border: 2px solid $greenDark;
-         border-bottom-right-radius: $borderRadius;
-         border-top-right-radius: $borderRadius;
-         border-left: none;
-         font-weight: bold;
-        display: flex;
-        justify-content: center;
-        width: 7em !important;
-        min-width: 7em !important;
+        &[type=submit] {
+          color: white;
+          background-color: $greenDark;
+          border: 2px solid $greenDark;
+          border-bottom-right-radius: $borderRadius;
+          border-top-right-radius: $borderRadius;
+          border-left: none;
+          font-weight: bold;
+          display: flex;
+          justify-content: center;
+          width: 7em !important;
+          min-width: 7em !important;
          
-         &:hover, &:focus {
-            background-color: white;
-            color: $greenDark;
-            border-color: $greyLight;
-            cursor: pointer;
-         }
-
-        //  &:disabled {
-        //    &:hover {
-        //     color: white;
-        //     background-color: $greenDark;
-        //    }
-        //  }
+        &:hover, &:focus {
+          background-color: white;
+          color: $greenDark;
+          border-color: $greyLight;
+          cursor: pointer;
+        }
        }
       }
     }
 
     aside {
-        color: rgb(255, 17, 0);
-        bottom: -2em;
-        position: absolute;
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 2.5em;
+
+      p {
+        color: red;
         font-size: 0.85em;
+      }
     }
   }

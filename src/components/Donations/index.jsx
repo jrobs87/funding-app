@@ -18,8 +18,8 @@ const Donations = props => {
     const [donations, setDonations] = useState({
         list: [], // leave empty on load
         total: 0, // does not yet exist in API...
-        goal: goal, 
-        remaining: goal, 
+        goal: goal,
+        remaining: goal,
         progress: -1 // ensures we begin with progress bar out of view on load...
     });
 
@@ -56,7 +56,7 @@ const Donations = props => {
     };
 
     // ----- API (simulated/simplified) ------------------------------------------------
-    // Simulate an initial GET endpoint on component mount to fetch donations... ignore warnings
+    // Simulate an initial GET endpoint on component mount to fetch donations... ignore warning
     useEffect(() => {
         fetchAPI();
     }, []);
@@ -80,7 +80,7 @@ const Donations = props => {
 
     // ----- Simplified rendering with data for demo... ----------------------------------
     return (
-        <>
+        <article>
             <ConfettiFun // confetti element for goal completion :)
                 progress={donations.progress} // simple percentage
             />
@@ -118,7 +118,7 @@ const Donations = props => {
                     setpostSuccess={setpostSuccess} // update/toggle failed POST
                 />
             </section>
-        </>
+        </article>
     );
 };
 
