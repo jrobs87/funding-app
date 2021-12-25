@@ -22,6 +22,12 @@
     z-index: 0;
   }
 
+  p {
+    z-index: 1;
+    position: relative;
+    margin: 0;
+  }
+
   .dollar-sign {
       position: relative;
       font-size: 0.8em;

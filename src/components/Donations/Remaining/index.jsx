@@ -12,18 +12,15 @@ export default function Remaining(props) {
         <div className='donations-remaining'>
             {
                 total >= goal ?
-                    <span>
-                        <strong>Woohoo! This project is fully funded!</strong>
-                        <br />
-                        We have raised <span className='dollar-sign'>$</span>
-                        {utility.formatCurrency(total)} (our goal was <span className='dollar-sign'>$</span>{utility.formatCurrency(goal)})!
-                    </span>
+                    <p>
+                        <strong>Woohoo!</strong> This project is fully funded!
+                    </p>
                     :
-                    <>
+                    <p>
                         <strong>
                             <span className='dollar-sign'>$</span>{remaining}
                         </strong> still needed to fund this project
-                    </>
+                    </p>
             }
         </div>
     )
