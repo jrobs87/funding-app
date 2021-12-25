@@ -57,7 +57,7 @@
           border: 2px solid $greenDark;
           border-bottom-right-radius: $borderRadius;
           border-top-right-radius: $borderRadius;
-          border-left: none;
+          border-left: 2px solid $greenDark;
           font-weight: bold;
           display: flex;
           justify-content: center;
@@ -67,7 +67,8 @@
         &:hover, &:focus {
           background-color: white;
           color: $greenDark;
-          border-color: $greyLight;
+          border-color: $greenDark;
+          
           cursor: pointer;
         }
        }
