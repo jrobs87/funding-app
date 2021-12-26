@@ -1,15 +1,12 @@
 import React, { useState, useRef } from 'react';
-import './index.scss';
 import CurrencyInput from 'react-currency-input-field';
+import './index.scss';
 
 export default function Form(props) {
 
     // ----- Props (and default props as needed) -----------------------------------------
     const postSuccess = props.postSuccess;
     const callback = props.callback; // "fetch API" from parent passed as callback...
-
-
-
 
     // ----- Default Props (days and goal) -----------------------------------------------
     const [input, setInput] = useState(null); // controlled input (text/string)

@@ -1,6 +1,6 @@
 import React from 'react';
-import './index.scss';
 import { animated, useSpring } from '@react-spring/web';
+import './index.scss';
 
 export default function ProgressBar(props) {
     const style = useSpring({
@@ -10,7 +10,6 @@ export default function ProgressBar(props) {
         from: {
             transform: `translateX(0%)`
         }
-
     });
 
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
-import Confetti from 'react-confetti';
 import { useWindowSize } from '@react-hook/window-size';
+import Confetti from 'react-confetti';
 import './index.scss';
 
 export default function ConfettiFun(props) {

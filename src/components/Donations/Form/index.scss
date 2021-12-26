@@ -1,90 +1,90 @@
 @import '../../../variables.scss';
 
 .form {
+  position: relative;
+
+  fieldset {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    border: none;
     position: relative;
 
-    fieldset {
-      display: flex;
-      padding: 0;
-      margin: 0;
-      border: none;
-      position: relative;
-
-      &::after {
-        content: "$";
-        position: absolute;
-        z-index: 1;
-        color: $greyDark;
-        top: 0.1em;
-        left: 0;
-        padding: 1em;
-        pointer-events: none;
-      }
-
-      input {
-        padding: 1em;
-        width: 100%;
-        font-size: 1em;
-        margin: 0;
-        background-color: unset;
-        -webkit-appearance: none;
-        border-radius: 0;
-        -webkit-border-radius: 0;
-        transition: 0.1s;
-
-        &:disabled {
-          cursor: progress !important;
-        }
-
-        &:focus {
-          outline: 3px solid $blueFocus;
-          outline-offset: -3px;
-        }
-    
-        &[type=text] {
-          flex-grow: 1;
-          padding-left: 2em;
-          font-weight: 600;
-          border: 2px solid $greyLight;
-          border-right: none !important;
-          border-bottom-left-radius: $borderRadius;
-          border-top-left-radius: $borderRadius;
-        }
-
-        &[type=submit] {
-          color: white;
-          background-color: $greenDark;
-          border: 2px solid $greenDark;
-          border-bottom-right-radius: $borderRadius;
-          border-top-right-radius: $borderRadius;
-          border-left: 2px solid $greenDark;
-          font-weight: bold;
-          display: flex;
-          justify-content: center;
-          width: 7em !important;
-          min-width: 7em !important;
-         
-        &:hover, &:focus {
-          background-color: white;
-          color: $greenDark;
-          border-color: $greenDark;
-          
-          cursor: pointer;
-        }
-       }
-      }
+    &::after {
+      content: "$";
+      position: absolute;
+      z-index: 1;
+      color: $greyDark;
+      top: 0.1em;
+      left: 0;
+      padding: 1em;
+      pointer-events: none;
     }
 
-    aside {
-      display: flex;
-      align-items: center;
-      position: relative;
-      height: 2.25em;
-      padding-bottom: 0.25em;
+    input {
+      padding: 1em;
+      width: 100%;
+      font-size: 1em;
+      margin: 0;
+      background-color: unset;
+      -webkit-appearance: none;
+      border-radius: 0;
+      -webkit-border-radius: 0;
+      transition: 0.1s;
 
-      p {
-        color: red;
-        font-size: 0.85em;
+      &:disabled {
+        cursor: progress !important;
+      }
+
+      &:focus {
+        outline: 3px solid $blueFocus;
+        outline-offset: -3px;
+      }
+  
+      &[type=text] {
+        flex-grow: 1;
+        padding-left: 2em;
+        font-weight: 600;
+        border: 2px solid $greyLight;
+        border-right: none !important;
+        border-bottom-left-radius: $borderRadius;
+        border-top-left-radius: $borderRadius;
+      }
+
+      &[type=submit] {
+        color: white;
+        background-color: $greenDark;
+        border: 2px solid $greenDark;
+        border-bottom-right-radius: $borderRadius;
+        border-top-right-radius: $borderRadius;
+        border-left: 2px solid $greenDark;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        width: 7em !important;
+        min-width: 7em !important;
+        
+      &:hover, &:focus {
+        background-color: white;
+        color: $greenDark;
+        border-color: $greenDark;
+        
+        cursor: pointer;
+      }
       }
     }
   }
+
+  aside {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 2.25em;
+    padding-bottom: 0.25em;
+
+    p {
+      color: red;
+      font-size: 0.85em;
+    }
+  }
+}

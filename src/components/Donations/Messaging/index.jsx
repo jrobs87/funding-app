@@ -22,5 +22,5 @@ export default function Messaging(props) {
                 }
             </h2>
         </>
-    )
+    );
 };
